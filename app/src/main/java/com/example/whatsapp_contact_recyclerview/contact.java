@@ -2,7 +2,6 @@ package com.example.whatsapp_contact_recyclerview;
 
 public class contact {
     int id;
-
     String name;
     String status;
 

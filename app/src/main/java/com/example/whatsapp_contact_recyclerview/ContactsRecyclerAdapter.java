@@ -18,51 +18,6 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         this.items = items;
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
-        return new ViewHolder(itemview);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        contact item = items.get(position);
-        holder.name.setText(item.name);
-        holder.status.setText(item.status);
-        holder.profileImage.setImageResource(item.image_id);
-        if(OnItemClickListener != null){
-        holder.itemView.setOnClickListener(v -> {
-            OnItemClickListener.onItemClick(position, item);
-        });}
-        if (onImageClickListener != null) {
-            holder.profileImage.setOnClickListener(v -> {
-                onImageClickListener.onItemClick(position, item);
-            });
-        }
-    }
-
-    OnItemClickListener onImageClickListener;
-    OnItemClickListener OnItemClickListener;
-
-    public void setOnImageClickListener(ContactsRecyclerAdapter.OnItemClickListener onImageClickListener) {
-        this.onImageClickListener = onImageClickListener;
-    }
-
-    public void setOnItemClickListener(ContactsRecyclerAdapter.OnItemClickListener onItemClickListener) {
-        OnItemClickListener = onItemClickListener;
-    }
-
-    interface OnItemClickListener {
-        void onItemClick(int postion, contact contact);
-    }
-
-    @Override
-    public int getItemCount() {
-        if (items == null) return 0;
-        return items.size();
-    }
-
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         ImageView profileImage;
@@ -75,4 +30,56 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
             status = itemView.findViewById(R.id.status_tv);
         }
     }
+            /*the adapter abstract methode start from here  */
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_contact, parent, false);
+        return new ViewHolder(itemview);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (items == null) return 0;
+        return items.size();
+    }
+
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        contact item = items.get(position);
+        holder.name.setText(item.name);
+        holder.status.setText(item.status);
+        holder.profileImage.setImageResource(item.image_id);
+        if(OnItemClickListener != null){
+            holder.itemView.setOnClickListener(v -> {
+                OnItemClickListener.onItemClick(position, item);
+            });}
+        if (onImageClickListener != null) {
+            holder.profileImage.setOnClickListener(v -> {
+                onImageClickListener.onItemClick(position, item);
+            });
+        }
+    }
+
+            /*The click code start from here */
+    /* we create the on click listener away from the adapter code to make it as a dynamic click */
+    OnItemClickListener onImageClickListener;
+    OnItemClickListener OnItemClickListener;
+
+    public void setOnImageClickListener(ContactsRecyclerAdapter.OnItemClickListener onImageClickListener) {
+        this.onImageClickListener = onImageClickListener;
+        //setter function
+    }
+
+    public void setOnItemClickListener(ContactsRecyclerAdapter.OnItemClickListener onItemClickListener) {
+        OnItemClickListener = onItemClickListener;
+        //setter function
+    }
+
+    interface OnItemClickListener {
+        void onItemClick(int postion, contact contact);
+    }
+
+
 }
