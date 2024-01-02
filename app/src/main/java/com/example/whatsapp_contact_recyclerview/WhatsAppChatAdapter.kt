@@ -23,10 +23,6 @@ class WhatsAppChatAdapter(val items: List<Contact_kt>)
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_contact,parent,false)
         return ViewHolder(view)
     }
-
-
-
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val contact = items?.get(position)
         if(contact != null) {

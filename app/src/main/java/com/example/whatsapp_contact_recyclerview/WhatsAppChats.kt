@@ -9,6 +9,7 @@ class WhatsAppChats : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWhatsAppChatsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initRecyclerView()
     }
 
@@ -17,7 +18,7 @@ class WhatsAppChats : AppCompatActivity() {
     private fun initRecyclerView() {
         createContactList();
         adapter = WhatsAppChatAdapter(ContactList)
-        binding.rvContacts.adapter
+        binding.rvContacts.adapter = adapter
     }
 
     private fun createContactList() {
