@@ -38,7 +38,7 @@ public class whats_app_contacts extends AppCompatActivity {
         contactList.add(new contact(1,"contact num ","status for contact " ,R.drawable.avatar_profile));
         contactList.add(new contact(2,"contact num ","status for contact 2 " ,R.drawable.avatar_profile));
         contactList.add(new contact(3,"contact num ","status for contact  3 " ,R.drawable.avatar_profile));
-        contactList.add(new contact(5,"contact num ","status for contact  5 " ,R.drawable.avatar_profile));
+        contactList.add(new contact(5,"contact num ","status for contact  5 " ,R.drawable.avatar_profile));   contactList.add(new contact(5,"contact num ","status for contact  5 " ,R.drawable.avatar_profile));   contactList.add(new contact(5,"contact num ","status for contact  5 " ,R.drawable.avatar_profile));
 
         /*
         for(int  i = 0 ;i<10000;i++){
